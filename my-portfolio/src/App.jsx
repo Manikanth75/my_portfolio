@@ -53,7 +53,7 @@ function App()
 
       {/* Home */}
 <section id="home">
-  <p className="intro">Hello, I'm</p>
+  <p className="intro">Hello..!</p>
 
   <h1 className="hero-name">Manikanth Belkera</h1>
 
@@ -116,7 +116,7 @@ function App()
         <p>Phone: +91 8073123104</p>
       </section>
     </>
-  );
+  ); 
 }
 
 export default App;
