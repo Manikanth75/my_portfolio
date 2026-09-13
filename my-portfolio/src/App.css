@@ -22,22 +22,18 @@ body {
 /* =========================
    NAVIGATION
 ========================= */
-
 nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding: 20px 8%;
-
-  background: rgba(11, 15, 25, 0.85);
-  backdrop-filter: blur(10px);
-
+  padding: 18px 8%;
+  background: rgba(11, 15, 25, 0.75);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(108, 99, 255, 0.15);
   z-index: 1000;
 }
 
@@ -52,15 +48,30 @@ nav div {
 }
 
 nav a {
+  position: relative;
   color: #ffffff;
   text-decoration: none;
   font-size: 16px;
+  transition: color 0.3s ease;
+}
 
-  transition: 0.3s;
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #6c63ff;
+  transition: width 0.3s ease;
 }
 
 nav a:hover {
   color: #6c63ff;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 
@@ -70,14 +81,13 @@ nav a:hover {
 
 section {
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  padding: 100px 8%;
+  padding: 120px 8%;
   text-align: center;
+  position: relative;
 }
 
 
@@ -257,19 +267,72 @@ section h1 {
     padding: 15px 5%;
   }
 
+  nav h2 {
+    font-size: 20px;
+  }
+
   nav div {
-    gap: 12px;
+    gap: 10px;
   }
 
   nav a {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   section {
-    padding: 100px 5%;
+    padding: 100px 5% 60px;
   }
 
-} 
+  .profile-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  #home h1 {
+    font-size: 48px;
+  }
+
+  #home h2 {
+    font-size: 20px;
+  }
+
+  #home p {
+    font-size: 16px;
+  }
+
+  .quick-info {
+    gap: 15px;
+    width: 100%;
+  }
+
+  .info-card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  section h1 {
+    font-size: 42px;
+  }
+
+  .skills-container {
+    width: 100%;
+  }
+
+  .skill-card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  #projects > div {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  #contact p {
+    font-size: 17px;
+  }
+}
+
 /* =========================
    HERO ANIMATIONS
 ========================= */
@@ -338,4 +401,172 @@ section h1 {
   transform: translate(-50%, -50%);
   z-index: 9999;
   transition: left 0.08s linear, top 0.08s linear;
+}
+.cursor-glow {
+  position: fixed;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #6c63ff;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+
+  box-shadow:
+    0 0 10px #6c63ff,
+    0 0 25px rgba(108, 99, 255, 0.6),
+    0 0 45px rgba(108, 99, 255, 0.3);
+
+  transition:
+    left 0.08s ease-out,
+    top 0.08s ease-out,
+    width 0.1s ease,
+    height 0.1s ease;
+}
+.cursor-glow.hover {
+  width: 45px;
+  height: 45px;
+  background: rgba(108, 99, 255, 0.15);
+  box-shadow:
+    0 0 15px #6c63ff,
+    0 0 35px rgba(108, 99, 255, 0.7);
+}
+/* QUICK INFO CARDS */
+
+.quick-info {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 55px;
+  flex-wrap: wrap;
+}
+
+.info-card {
+  width: 240px;
+  min-height: 150px;
+  padding: 28px 25px;
+
+  border: 1px solid rgba(108, 99, 255, 0.25);
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+
+  text-decoration: none;
+  color: white;
+
+  transition: 0.3s ease;
+}
+
+.info-card span {
+  font-size: 38px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.info-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  font-size: 16px;
+  color: #aeb8c8;
+}
+
+.info-card:hover {
+  transform: translateY(-10px);
+  border-color: #6c63ff;
+
+  background: rgba(108, 99, 255, 0.08);
+
+  box-shadow:
+    0 10px 30px rgba(108, 99, 255, 0.2),
+    0 0 25px rgba(108, 99, 255, 0.1);
+}
+.info-icon {
+  font-size: 36px;
+  color: #6c63ff;
+  margin-bottom: 12px;
+}
+/* PROFILE IMAGE */
+
+.profile-image {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #6c63ff;
+  margin-bottom: 25px;
+}
+/* SKILL CARDS */
+
+.skills-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 25px;
+  width: min(1000px, 90%);
+  flex-wrap: wrap;
+}
+
+.skill-card {
+  width: 280px;
+  min-height: 280px;
+  padding: 35px 25px;
+  border: 1px solid rgba(108, 99, 255, 0.3);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.skill-icon {
+  font-size: 65px;
+  color: #6c63ff;
+  margin-bottom: 20px;
+}
+
+.skill-card h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.skill-card p {
+  color: #aeb8c8;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.skill-card:hover {
+  transform: translateY(-12px);
+  border-color: #6c63ff;
+  box-shadow:
+    0 15px 35px rgba(108, 99, 255, 0.25),
+    0 0 25px rgba(108, 99, 255, 0.1);
+} 
+#contact a {
+  color: #6c63ff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}
+.about-card {
+  width: min(800px, 90%);
+  padding: 40px;
+  border: 1px solid rgba(108, 99, 255, 0.3);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.about-card p {
+  color: #aeb8c8;
+  font-size: 19px;
+  line-height: 1.8;
 }

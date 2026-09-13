@@ -1,4 +1,12 @@
 import { useEffect, useState } from "react";
+import profileImage from "./assets/profile.jpeg";
+ import {
+  FaCode,
+  FaRocket,
+  FaEnvelope,
+  FaJava,
+  FaPython
+} from "react-icons/fa";
 import "./App.css";
 function App()
  {
@@ -6,6 +14,7 @@ function App()
   x: 0,
   y: 0
 });
+const [isHovering, setIsHovering] = useState(false);
   useEffect(() => {
   const sections = document.querySelectorAll(".reveal");
 
@@ -27,11 +36,26 @@ function App()
     observer.disconnect();
   };
 }, []);
+useEffect(() => {
+  const handleMouseMove = (event) => {
+    setMousePosition({
+      x: event.clientX,
+      y: event.clientY
+    });
+  };
+
+  window.addEventListener("mousemove", handleMouseMove);
+
+  return () => {
+    window.removeEventListener("mousemove", handleMouseMove);
+  };
+}, []);
   return (
     <>
+    
     <div
-  className="cursor-glow"
-  style={{
+  className={`cursor-glow ${isHovering ? "hover" : ""}`}
+  style={{ 
     left: mousePosition.x,
     top: mousePosition.y
   }}
@@ -53,7 +77,8 @@ function App()
 
       {/* Home */}
 <section id="home">
-  <p className="intro">Hello..!</p>
+  <img src={profileImage} alt="Mani Belkeri" className="profile-image" />
+  <p className="intro">Hello.. im</p>
 
   <h1 className="hero-name">Manikanth Belkera</h1>
 
@@ -65,33 +90,81 @@ function App()
     I am interested in programming, web development and technology.
   </p>
 
-  <button className="hero-button">
+  <button className="hero-button cursor-button"
+   onMouseEnter={() => setIsHovering(true)}
+  onMouseLeave={() => setIsHovering(false)}>
+
     View My Projects
   </button>
+  <div className="quick-info">
+
+  <a  href="#skills"className="info-card">
+
+  <FaCode className="info-icon" />
+    <h3>Skills</h3>
+    <p>Java • Python • C</p>
+  </a>
+
+  <a href="#projects" className="info-card">
+    <FaRocket className="info-icon" />
+    <h3>Projects</h3>
+    <p>View my work</p>
+  </a>
+
+  <a href="#contact" className="info-card">
+    <FaEnvelope className="info-icon" />
+    <h3>Contact</h3>
+    <p>Let's connect</p>
+  </a>
+</div>
 </section>
 
       {/* About */}
       <section id="about" className="reveal">
-        <h1>About Me</h1>
+  <h1>About Me</h1>
 
-        <p>
-          I'm a Computer Science Engineering student who enjoys
-          learning programming and building useful projects.
-        </p>
-      </section>
+  <div className="about-card">
+    <p>
+      I'm a Computer Science Engineering student who enjoys
+      learning programming and building useful projects.
+    </p>
+  </div>
+</section>
 
-      {/* Skills */}
-      <section id="skills"className="reveal">
-        <h1>My Skills</h1>
+      <section id="skills" className="reveal">
+  <h1>My Skills</h1>
 
-        <div>
-          <p>C Programming</p>
-          <p>JavaScript</p>
-          <p>React</p>
-          <p>Node.js</p>
-          <p>MongoDB</p>
-        </div>
-      </section>
+  <div className="skills-container">
+
+    <div className="skill-card">
+      <FaJava className="skill-icon" />
+      <h2>Java</h2>
+      <p>
+        Object-oriented programming, problem solving,
+        and application development.
+      </p>
+    </div>
+
+    <div className="skill-card">
+      <FaPython className="skill-icon" />
+      <h2>Python</h2>
+      <p>
+        Programming, automation, problem solving,
+        and beginner-level development.
+      </p>
+    </div>
+
+    <div className="skill-card">
+      <FaCode className="skill-icon" />
+      <h2>C</h2>
+      <p>
+        Programming fundamentals, logic building,
+        and data structures.
+      </p>
+    </div>
+
+  </div>
+</section>
 
       {/* Projects */}
       <section id="projects"className="reveal">
@@ -109,12 +182,48 @@ function App()
       </section>
 
       {/* Contact */}
-      <section id="contact"className="reveal">
-        <h1>Contact Me</h1>
+      <section id="contact" className="reveal">
+  <h1>Contact Me</h1>
 
-        <p>Email: manibelkeri@gmail.com</p>
-        <p>Phone: +91 8073123104</p>
-      </section>
+  <p>
+    Email:{" "}
+    <a href="mailto:manibelkeri@gmail.com">
+      manibelkeri@gmail.com
+    </a>
+  </p>
+<p>
+  Phone:{" "}
+  <a href="tel:+91 8073  123104">
+    +91 8073  123104
+  </a>
+</p>
+  <p>
+    LinkedIn:{" "}
+    <a
+      href="https://www.linkedin.com/in/manibelkeri-96ab32362/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      My LinkedIn
+    </a>
+  </p>
+
+  <p>
+    GitHub:{" "}
+    <a
+      href="https://github.com/Manikanth75"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      My GitHub
+    </a>
+  </p>
+  <p> contact information</p>
+  
+</section>
+
+        
+      
     </>
   ); 
 }
