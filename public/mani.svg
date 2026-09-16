@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="neonM" x1="18" y1="20" x2="110" y2="100" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E879FF"/>
+      <stop offset="0.45" stop-color="#A855F7"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+
+    <filter id="purpleGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3" result="blur1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Transparent background: only the glowing M -->
+  <g filter="url(#purpleGlow)">
+    <path
+      d="M19 90V30L64 63L109 30V90L96 100V55L64 79L32 55V100L19 90Z"
+      fill="url(#neonM)"
+    />
+    <path
+      d="M32 55L64 79L96 55"
+      stroke="#F5D0FE"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>
